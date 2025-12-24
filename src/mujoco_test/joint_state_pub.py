@@ -4,10 +4,12 @@ import numpy as np
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+from mujoco.viewer import launch_passive
 
 # Load model
 model = mujoco.MjModel.from_xml_path("/home/drunk/mujoco_menagerie/universal_robots_ur5e/scene.xml")
 data = mujoco.MjData(model)
+viewer = launch_passive(model, data)
 
 # Simulation timestep
 dt = model.opt.timestep
@@ -48,12 +50,16 @@ class PhantomButton(Node):
         msg = String()
         q  = data.qpos.copy()   # joint positions
         dq = data.qvel.copy()   # joint velocities
+        q_des = np.array([0.0, -1.57, 1.57, 0.0, 0.0, 0.0])
+        data.ctrl[:] = q_des
+
+
         msg.data = f"{q}\nJoint_velocities: {dq}"# 6-DOF UR5
         self.button_sub.publish(msg)
 
 
 
-
+        viewer.sync()
         mujoco.mj_step(model, data)
         time.sleep(dt)
 
