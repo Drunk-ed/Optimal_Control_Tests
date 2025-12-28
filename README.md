@@ -28,7 +28,8 @@ This repository is intended for learning and experimentation with:
 - Robot simulation
 - Control system development
 - ROS 2 interfaces for robot control
-
+## Resources
+- Joint Torque Limits if UR5e Robot - https://www.universal-robots.com/articles/ur/robot-care-maintenance/max-joint-torques-cb3-and-e-series/
 ## Notes
 - Build artifacts (`build/`, `install/`, `log/`) are intentionally ignored.
 - This is a work-in-progress learning and research repository.
