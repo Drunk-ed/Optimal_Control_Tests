@@ -1,55 +1,74 @@
 # Optimal Control Tests
 
-This repository contains minimal but structured experiments for **robot control and simulation**, with a focus on joint-level control, dynamics, and ROS 2–based system integration.
+This repository contains hands-on experiments for learning robot dynamics and control using simulation as a substitute for real robot hardware.
 
-This repository is part of a larger ongoing effort aimed at understanding **robot dynamics, feedback control, and optimal control methods**, and will be updated incrementally as development progresses.
+It is developed alongside a control systems / robotics course, where theoretical concepts (dynamics, controllers, stability) are implemented and validated in simulation to gain practical experience equivalent to working with real robots.
 
----
-
-## Contents
-
-- `src/` – Source code (ROS 2 nodes, MuJoCo simulation, control experiments)
-- MuJoCo-based simulation of a 6-DOF industrial robot (UR5e)
-- Joint-level torque control experiments
-- PD controller implementation with gravity compensation (estimated/learned)
-- Joint state feedback (positions & velocities)
-- Minimal ROS 2 publisher/subscriber examples for robot control
+The project follows a joint-level control approach using MuJoCo and ROS 2, closely mimicking real industrial robot interfaces.
 
 ---
 
-## Current Status (Completed)
+## Motivation
 
-The following components are **implemented and functional**:
+Access to real robot hardware is often limited.  
+This repository treats simulation as hardware, enabling:
 
-- Robot simulation using **MuJoCo**
-- Joint torque control interface
-- PD controller for joint-space regulation
-- Joint state feedback (positions and velocities)
-- Joint torque command publishing
-- ROS 2 integration between simulation and controller nodes
-- Torque saturation using joint limits
+- Safe experimentation with control laws
+- Direct torque-level control
+- Realistic joint state feedback
+- ROS 2–based modular controller design
 
-These components together form a **closed-loop joint-level control pipeline** using ROS 2.
+The goal is learning by implementation, not building a polished framework.
 
 ---
 
-## Upcoming
+## Current Features 
 
-Planned additions include advanced control strategies:
+- **MuJoCo-based robot simulation**
+  - UR5e robot model
+  - Physics-based joint dynamics
+- **ROS 2 integration**
+  - Joint position & velocity publishers
+  - Joint torque command subscribers
+- **Joint-level PD controller**
+  - Torque control interface
+  - Velocity damping
+- **Gravity compensation (estimated / learned)**
+  - Online gravity term estimation
+- **Joint limits & torque saturation**
+  - Realistic actuator constraints
+- **Simulation ↔ controller decoupling**
+  - Separate ROS 2 nodes for plant and controller
+- **Simulation used as real hardware**
+  - No direct access to model internals in controller
+
+---
+
+## Controllers Implemented
+
+- PD joint torque controller
+- Gravity compensation (estimated online)
+- Torque saturation & joint safety limits
+
+---
+
+## Upcoming Controllers
+
+Planned implementations as part of the course progression:
 
 - PID control
 - Inverse dynamics control
-- Feedback linearization and Computed torque control
-- Further experiments with optimal control formulations
-- Improved gravity and dynamics estimation
-- Controller tuning and stability analysis
+- Feedback linearization
+- Computed torque control
+- Optimal control experiments
+- Trajectory tracking (joint space)
 
 ---
 
 ## Requirements
 
 - Ubuntu 22.04
-- ROS 2 (Humble or later)
+- ROS 2 Humble (or later)
 - Python 3.10+
 - MuJoCo
 
@@ -57,25 +76,35 @@ Planned additions include advanced control strategies:
 
 ## Usage
 
-This repository is intended for **learning, experimentation, and research** in:
+This repository is intended for:
 
-- Robot simulation
-- Joint-space control design
-- Robot dynamics and gravity compensation
-- ROS 2 interfaces for robot control
-- Understanding the interaction between physics simulation and control laws
+- Learning robot dynamics
+- Implementing classical control laws
+- Understanding joint-level robot interfaces
+- Practicing ROS 2 communication for robotics
+- Gaining practical experience without physical robots
 
 ---
 
 ## Resources
 
-- **Joint Torque Limits of UR5e Robot**  
+- **UR5e Joint Torque Limits**  
   https://www.universal-robots.com/articles/ur/robot-care-maintenance/max-joint-torques-cb3-and-e-series/
+
+- MuJoCo Documentation  
+- ROS 2 Control Concepts
+- Classical Robotics & Control textbooks
 
 ---
 
 ## Notes
 
-- Build artifacts (`build/`, `install/`, `log/`) are intentionally ignored.
-- This repository is a **work-in-progress**, focused on clarity, minimal examples, and progressive experimentation.
-- Code structure may evolve as more advanced controllers and dynamics models are introduced.
+- Build artifacts (`build/`, `install/`, `log/`) are intentionally ignored
+- This is a learning and research repository
+- Code clarity and experimentation are prioritized over abstraction
+- The repository will evolve as the course progresses
+
+---
+
+---
+
