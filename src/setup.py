@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             'joint_state_pub = mujoco_test.joint_state_pub:main',
             'joint_state_sub = mujoco_test.joint_state_sub:main',
+            'PD_grav_comp = mujoco_test.PD_grav_comp:main'
         ],
     },
 )

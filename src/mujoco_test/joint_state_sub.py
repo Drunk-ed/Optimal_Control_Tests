@@ -1,19 +1,22 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
+from std_msgs.msg import Float64MultiArray
 
 class JointStateSubscriber(Node):
     def __init__(self):
         super().__init__('joint_state_subscriber')
+        
         self.sub = self.create_subscription(
-            String,
-            '/string/msgs',
+            Float64MultiArray,
+            '/joint_states/vel',
             self.callback,
             10
         )
 
     def callback(self, msg):
-        self.get_logger().info(f"Joint states: {msg.data}")
+        joint_pos = list(msg.data)
+        self.get_logger().info(f"{msg}")
+
 
 def main():
     rclpy.init()
