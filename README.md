@@ -104,7 +104,5 @@ This repository is intended for:
 - Code clarity and experimentation are prioritized over abstraction
 - The repository will evolve as the course progresses
 
----
 
----
 
