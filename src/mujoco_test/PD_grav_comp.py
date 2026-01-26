@@ -46,7 +46,7 @@ while True:
 
 class PD_controller(Node):
     def __init__(self):
-        super().__init__('phantom_Button')
+        super().__init__('PD_controller')
         self.gravity = np.zeros(6)
         #self.kp = 200
         #self.ki = 10
